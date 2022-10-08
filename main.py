@@ -49,4 +49,4 @@ def collect_reports_and_update_statistics(retro=False):
 
 
 if __name__ == "__main__":
-    collect_reports_and_update_statistics(retro=False)
+    collect_reports_and_update_statistics()
