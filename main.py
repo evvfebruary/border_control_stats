@@ -1,3 +1,4 @@
+import datetime
 import pickle
 from loguru import logger
 
@@ -6,7 +7,8 @@ from analyser.stats import calculate_hashtags_stats
 from scrapper.config import FIRST_MESSAGE_WITH_LABEL_ID
 from analyser.report import get_all_reports_from_messages
 from scrapper.messages import get_messages_from_border_control
-from database.postgres import insert_new_report, get_last_message_id, insert_or_increase_hashtag, insert_new_people
+from database.postgres import insert_new_report, get_last_message_id, insert_or_increase_hashtag, insert_new_people, db, \
+    reports_table, hashtags_stats, peoples_table
 
 
 def fulfill_hashtag_stats_tables(hashtag_stats):
@@ -33,7 +35,9 @@ def collect_reports_and_update_statistics(retro=False):
         last_saved_message_id = get_last_message_id()
 
     # Collect message
+    # messages, scrap_date = pickle.load(open("./all_messages_2022-10-08T14:22:46.559955.pickle", 'rb')), datetime.datetime.now()
     messages, scrap_date = get_messages_from_border_control(min_id=last_saved_message_id)
+
 
     reports = get_all_reports_from_messages(messages)
     logger.info(f"# Prepare reports from messages: {len(reports)}")

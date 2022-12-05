@@ -37,7 +37,7 @@ hashtags_stats = Table(HASHTAGS_STATS_TABLE_NAME, meta,
 
 peoples_table = Table(PEOPLES_TABLE_NAME, meta,
                       Column('id', Integer, primary_key=True),
-                      Column('report_id', Integer, ForeignKey('reports_new.id')),
+                      Column('report_id', Integer, ForeignKey('reports.id')),
                       Column('gender', String),
                       Column('age', Integer),
                       Column('approved', Boolean))
@@ -90,3 +90,4 @@ def insert_or_increase_hashtag(hashtag, approved, cnt):
                 cnt=new_cnt)
             session.execute(update_statement)
             session.commit()
+

@@ -66,6 +66,9 @@ def get_all_reports_from_messages(messages: List[dict]) -> List[Report]:
         message_dd = defaultdict(lambda: None, message)
         post_date, message_id, text = itemgetter('date', 'id', 'message')(message_dd)
 
+        if text is None:
+            continue
+
         # Work with different lengths of separators in report
         reports_splitted_len, splitted_text = -1, None
         for possible_separator in REPORTS_SEPARATORS:

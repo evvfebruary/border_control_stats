@@ -9,9 +9,7 @@ FIRST_MESSAGE_WITH_LABEL_ID = 1640
 CHANNEL_LINK = 'https://t.me/+yHACAsBxEXo4OGEy'
 
 # Telegram API credentials and params
-SLEEP_VALUE = 60 + 5
+SLEEP_VALUE = (60 + 5) * 2
 API_ID = os.getenv('API_ID')
 API_HASH = os.getenv('API_HASH')
 FAKE_PHONE = os.getenv('FAKE_PHONE')
-
-
